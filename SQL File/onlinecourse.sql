@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Feb 11, 2022 at 02:35 AM
--- Server version: 10.3.15-MariaDB
--- PHP Version: 7.2.19
+-- Host: localhost:8889
+-- Generation Time: Sep 26, 2022 at 09:15 AM
+-- Server version: 5.7.34
+-- PHP Version: 8.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -32,8 +31,8 @@ CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
   `username` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
-  `creationDate` timestamp NULL DEFAULT current_timestamp(),
-  `updationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
+  `creationDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updationDate` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -55,7 +54,7 @@ CREATE TABLE `course` (
   `courseName` varchar(255) DEFAULT NULL,
   `courseUnit` varchar(255) DEFAULT NULL,
   `noofSeats` int(11) DEFAULT NULL,
-  `creationDate` timestamp NULL DEFAULT current_timestamp(),
+  `creationDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updationDate` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -65,7 +64,8 @@ CREATE TABLE `course` (
 
 INSERT INTO `course` (`id`, `courseCode`, `courseName`, `courseUnit`, `noofSeats`, `creationDate`, `updationDate`) VALUES
 (1, 'PHP01', 'PHP', '5', 10, '2022-02-10 17:23:28', NULL),
-(2, 'C001', 'C++', '12', 25, '2022-02-11 00:52:46', '11-02-2022 06:23:06 AM');
+(2, 'C001', 'C++', '12', 25, '2022-02-11 00:52:46', '11-02-2022 06:23:06 AM'),
+(3, 'WD01', 'WEB DEVELOPMENT', '5', 12, '2022-09-20 17:13:12', NULL);
 
 -- --------------------------------------------------------
 
@@ -82,7 +82,7 @@ CREATE TABLE `courseenrolls` (
   `level` int(11) DEFAULT NULL,
   `semester` int(11) DEFAULT NULL,
   `course` int(11) DEFAULT NULL,
-  `enrollDate` timestamp NULL DEFAULT current_timestamp()
+  `enrollDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -91,7 +91,8 @@ CREATE TABLE `courseenrolls` (
 
 INSERT INTO `courseenrolls` (`id`, `studentRegno`, `pincode`, `session`, `department`, `level`, `semester`, `course`, `enrollDate`) VALUES
 (1, '10806121', '822894', 1, 1, 2, 3, 1, '2022-02-11 00:59:33'),
-(2, '10806121', '822894', 1, 1, 1, 2, 2, '2022-02-11 01:01:07');
+(2, '10806121', '822894', 1, 1, 1, 2, 2, '2022-02-11 01:01:07'),
+(3, '10806121', '822894', 1, 4, 2, 6, 3, '2022-09-20 17:24:15');
 
 -- --------------------------------------------------------
 
@@ -102,7 +103,7 @@ INSERT INTO `courseenrolls` (`id`, `studentRegno`, `pincode`, `session`, `depart
 CREATE TABLE `department` (
   `id` int(11) NOT NULL,
   `department` varchar(255) DEFAULT NULL,
-  `creationDate` timestamp NULL DEFAULT current_timestamp()
+  `creationDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -111,7 +112,9 @@ CREATE TABLE `department` (
 
 INSERT INTO `department` (`id`, `department`, `creationDate`) VALUES
 (1, 'IT', '2022-02-10 17:23:04'),
-(2, 'HR', '2022-02-10 17:23:09');
+(2, 'HR', '2022-02-10 17:23:09'),
+(4, 'CR', '2022-09-20 17:12:32'),
+(5, 'bca', '2022-09-21 09:30:43');
 
 -- --------------------------------------------------------
 
@@ -122,7 +125,7 @@ INSERT INTO `department` (`id`, `department`, `creationDate`) VALUES
 CREATE TABLE `level` (
   `id` int(11) NOT NULL,
   `level` varchar(255) DEFAULT NULL,
-  `creationDate` timestamp NULL DEFAULT current_timestamp()
+  `creationDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -143,8 +146,8 @@ INSERT INTO `level` (`id`, `level`, `creationDate`) VALUES
 CREATE TABLE `news` (
   `id` int(11) NOT NULL,
   `newstitle` varchar(255) DEFAULT NULL,
-  `newsDescription` mediumtext DEFAULT NULL,
-  `postingDate` timestamp NULL DEFAULT current_timestamp()
+  `newsDescription` mediumtext,
+  `postingDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -152,8 +155,8 @@ CREATE TABLE `news` (
 --
 
 INSERT INTO `news` (`id`, `newstitle`, `newsDescription`, `postingDate`) VALUES
-(2, 'Test News', 'This is for testing. This is for testing.This is for testing.This is for testing.This is for testing.This is for testing.This is for testing.This is for testing.This is for testing.This is for testing.', '2022-02-10 17:36:50'),
-(3, 'New Course Started C#', 'This is sample text for testing.', '2022-02-11 00:54:38');
+(4, 'Practicle exam', 'Coming soon', '2022-09-20 16:43:34'),
+(5, 'Sem5 ', 'quiz going on', '2022-09-20 16:43:56');
 
 -- --------------------------------------------------------
 
@@ -164,7 +167,7 @@ INSERT INTO `news` (`id`, `newstitle`, `newsDescription`, `postingDate`) VALUES
 CREATE TABLE `semester` (
   `id` int(11) NOT NULL,
   `semester` varchar(255) DEFAULT NULL,
-  `creationDate` timestamp NULL DEFAULT current_timestamp(),
+  `creationDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updationDate` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -175,7 +178,11 @@ CREATE TABLE `semester` (
 INSERT INTO `semester` (`id`, `semester`, `creationDate`, `updationDate`) VALUES
 (1, '1', '2022-02-10 17:22:49', NULL),
 (2, '2', '2022-02-10 17:22:55', NULL),
-(3, '3', '2022-02-11 00:51:43', NULL);
+(3, '3', '2022-02-11 00:51:43', NULL),
+(5, '4', '2022-09-20 17:12:06', NULL),
+(6, '5', '2022-09-20 17:12:10', NULL),
+(7, '5', '2022-09-21 09:29:57', NULL),
+(8, '1', '2022-09-22 05:14:50', NULL);
 
 -- --------------------------------------------------------
 
@@ -186,7 +193,7 @@ INSERT INTO `semester` (`id`, `semester`, `creationDate`, `updationDate`) VALUES
 CREATE TABLE `session` (
   `id` int(11) NOT NULL,
   `session` varchar(255) DEFAULT NULL,
-  `creationDate` timestamp NULL DEFAULT current_timestamp()
+  `creationDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -212,7 +219,7 @@ CREATE TABLE `students` (
   `department` varchar(255) DEFAULT NULL,
   `semester` varchar(255) DEFAULT NULL,
   `cgpa` decimal(10,2) DEFAULT NULL,
-  `creationdate` timestamp NULL DEFAULT current_timestamp(),
+  `creationdate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updationDate` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -221,7 +228,9 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`StudentRegno`, `studentPhoto`, `password`, `studentName`, `pincode`, `session`, `department`, `semester`, `cgpa`, `creationdate`, `updationDate`) VALUES
-('10806121', '', 'f925916e2754e5e03f75dd58a5733251', 'Anuj kumar', '822894', NULL, NULL, NULL, '7.10', '2022-02-11 00:53:31', NULL);
+('10806121', '', 'f925916e2754e5e03f75dd58a5733251', 'Kelin Patel', '822894', NULL, NULL, NULL, '7.10', '2022-02-11 00:53:31', NULL),
+('2020028818', NULL, '03c129b0a47c6a3577f21ff3e2d90e9a', 'Vivek', '236502', NULL, NULL, NULL, NULL, '2022-09-20 17:13:50', NULL),
+('234567890', NULL, 'f925916e2754e5e03f75dd58a5733251', 'Dhruv Patel', '268769', NULL, NULL, NULL, NULL, '2022-09-21 04:11:36', NULL);
 
 -- --------------------------------------------------------
 
@@ -233,7 +242,7 @@ CREATE TABLE `userlog` (
   `id` int(11) NOT NULL,
   `studentRegno` varchar(255) DEFAULT NULL,
   `userip` binary(16) DEFAULT NULL,
-  `loginTime` timestamp NULL DEFAULT current_timestamp(),
+  `loginTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `logout` varchar(255) DEFAULT NULL,
   `status` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -245,7 +254,16 @@ CREATE TABLE `userlog` (
 INSERT INTO `userlog` (`id`, `studentRegno`, `userip`, `loginTime`, `logout`, `status`) VALUES
 (1, '10806121', 0x3a3a3100000000000000000000000000, '2022-02-11 00:55:07', NULL, 1),
 (2, '10806121', 0x3a3a3100000000000000000000000000, '2022-02-11 00:57:00', NULL, 1),
-(3, '10806121', 0x3a3a3100000000000000000000000000, '2022-02-11 00:57:22', '11-02-2022 06:31:26 AM', 1);
+(3, '10806121', 0x3a3a3100000000000000000000000000, '2022-02-11 00:57:22', '11-02-2022 06:31:26 AM', 1),
+(4, '10806121', 0x3a3a3100000000000000000000000000, '2022-09-20 16:20:02', NULL, 1),
+(5, '10806121', 0x3a3a3100000000000000000000000000, '2022-09-20 16:20:27', NULL, 1),
+(6, '10806121', 0x3a3a3100000000000000000000000000, '2022-09-20 16:23:40', NULL, 1),
+(7, '2020028818', 0x3a3a3100000000000000000000000000, '2022-09-20 17:14:17', '20-09-2022 10:46:26 PM', 1),
+(8, '10806121', 0x3a3a3100000000000000000000000000, '2022-09-20 17:21:06', NULL, 1),
+(9, '10806121', 0x3a3a3100000000000000000000000000, '2022-09-20 17:21:34', NULL, 1),
+(10, '10806121', 0x3a3a3100000000000000000000000000, '2022-09-20 17:23:24', '20-09-2022 11:29:51 PM', 1),
+(11, '10806121', 0x3a3a3100000000000000000000000000, '2022-09-21 04:10:20', '21-09-2022 09:40:52 AM', 1),
+(12, '10806121', 0x3a3a3100000000000000000000000000, '2022-09-21 04:25:04', NULL, 1);
 
 --
 -- Indexes for dumped tables
@@ -325,19 +343,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `courseenrolls`
 --
 ALTER TABLE `courseenrolls`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `department`
 --
 ALTER TABLE `department`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `level`
@@ -349,25 +367,25 @@ ALTER TABLE `level`
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `semester`
 --
 ALTER TABLE `semester`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `session`
 --
 ALTER TABLE `session`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `userlog`
 --
 ALTER TABLE `userlog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
