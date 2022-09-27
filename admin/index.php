@@ -46,8 +46,8 @@ exit();
                 <div class="col-md-12">
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
-                             <li><a href="../index.php">Home </a></li>
-                             <li><a href="index.php">Admin Login </a></li>
+                             <!-- <li><a href="../index.php">Home </a></li> -->
+                             <li><a href="../index.php">Admin Login </a></li>
                               <!-- <li><a href="../index.php">Student Login</a></li> -->
         
 

@@ -6,17 +6,17 @@ if(isset($_POST['submit']))
 {
     $regno=$_POST['regno'];
     $password=md5($_POST['password']);
-$query=mysqli_query($con,"SELECT * FROM students WHERE StudentRegno='$regno' and password='$password'");
+$query=mysqli_query($con,"SELECT * FROM admin WHERE username='$regno' and password='$password'");
 $num=mysqli_fetch_array($query);
 if($num>0)
 {
 $_SESSION['login']=$_POST['regno'];
-$_SESSION['id']=$num['StudentRegno'];
-$_SESSION['sname']=$num['studentName'];
+$_SESSION['id']=$num['username'];
+// $_SESSION['sname']=$num['studentName'];
 $uip=$_SERVER['REMOTE_ADDR'];
 $status=1;
 $log=mysqli_query($con,"insert into userlog(studentRegno,userip,status) values('".$_SESSION['login']."','$uip','$status')");
-header("location: change-password.php");
+header("location: admin/index.php");
 }else{
 $_SESSION['errmsg']="Invalid Reg no or Password";
 header("location:http:index.php");
@@ -46,7 +46,7 @@ header("location:http:index.php");
                 <div class="col-md-12">
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
-                             <li><a href="index.php">Home </a></li>
+                             <!-- <li><a href="index.php">Home </a></li> -->
                              <li><a href="admin/">Admin Login </a></li>
                               <!-- <li><a href="index.php">Student Login</a></li> -->
         
@@ -73,7 +73,7 @@ header("location:http:index.php");
             <form name="admin" method="post">
             <div class="row">
                 <div class="col-md-6">
-                     <label>Enter Reg no : </label>
+                     <label>Enter Username : </label>
                         <input type="text" name="regno" class="form-control"  />
                         <label>Enter Password :  </label>
                         <input type="password" name="password" class="form-control"  />
