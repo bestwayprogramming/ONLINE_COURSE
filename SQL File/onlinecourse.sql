@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Sep 26, 2022 at 09:15 AM
+-- Generation Time: Sep 27, 2022 at 07:41 PM
 -- Server version: 5.7.34
 -- PHP Version: 8.0.8
 
@@ -63,7 +63,7 @@ CREATE TABLE `course` (
 --
 
 INSERT INTO `course` (`id`, `courseCode`, `courseName`, `courseUnit`, `noofSeats`, `creationDate`, `updationDate`) VALUES
-(1, 'PHP01', 'PHP', '5', 10, '2022-02-10 17:23:28', NULL),
+(1, 'PHP01', 'PHP', '10', 10, '2022-02-10 17:23:28', '27-09-2022 07:56:12 PM'),
 (2, 'C001', 'C++', '12', 25, '2022-02-11 00:52:46', '11-02-2022 06:23:06 AM'),
 (3, 'WD01', 'WEB DEVELOPMENT', '5', 12, '2022-09-20 17:13:12', NULL);
 
@@ -92,7 +92,8 @@ CREATE TABLE `courseenrolls` (
 INSERT INTO `courseenrolls` (`id`, `studentRegno`, `pincode`, `session`, `department`, `level`, `semester`, `course`, `enrollDate`) VALUES
 (1, '10806121', '822894', 1, 1, 2, 3, 1, '2022-02-11 00:59:33'),
 (2, '10806121', '822894', 1, 1, 1, 2, 2, '2022-02-11 01:01:07'),
-(3, '10806121', '822894', 1, 4, 2, 6, 3, '2022-09-20 17:24:15');
+(3, '10806121', '822894', 1, 4, 2, 6, 3, '2022-09-20 17:24:15'),
+(4, '2020028818', '236502', 1, 4, 2, 6, 2, '2022-09-27 11:20:40');
 
 -- --------------------------------------------------------
 
@@ -180,9 +181,10 @@ INSERT INTO `semester` (`id`, `semester`, `creationDate`, `updationDate`) VALUES
 (2, '2', '2022-02-10 17:22:55', NULL),
 (3, '3', '2022-02-11 00:51:43', NULL),
 (5, '4', '2022-09-20 17:12:06', NULL),
-(6, '5', '2022-09-20 17:12:10', NULL),
 (7, '5', '2022-09-21 09:29:57', NULL),
-(8, '1', '2022-09-22 05:14:50', NULL);
+(13, '6', '2022-09-27 14:13:22', NULL),
+(14, '7', '2022-09-27 14:20:10', NULL),
+(15, '8', '2022-09-27 14:32:18', '27-09-2022 08:02:25 PM');
 
 -- --------------------------------------------------------
 
@@ -263,7 +265,20 @@ INSERT INTO `userlog` (`id`, `studentRegno`, `userip`, `loginTime`, `logout`, `s
 (9, '10806121', 0x3a3a3100000000000000000000000000, '2022-09-20 17:21:34', NULL, 1),
 (10, '10806121', 0x3a3a3100000000000000000000000000, '2022-09-20 17:23:24', '20-09-2022 11:29:51 PM', 1),
 (11, '10806121', 0x3a3a3100000000000000000000000000, '2022-09-21 04:10:20', '21-09-2022 09:40:52 AM', 1),
-(12, '10806121', 0x3a3a3100000000000000000000000000, '2022-09-21 04:25:04', NULL, 1);
+(12, '10806121', 0x3a3a3100000000000000000000000000, '2022-09-21 04:25:04', NULL, 1),
+(13, 'admin', 0x3a3a3100000000000000000000000000, '2022-09-27 05:02:26', NULL, 1),
+(14, 'admin', 0x3a3a3100000000000000000000000000, '2022-09-27 05:03:17', NULL, 1),
+(15, 'admin', 0x3a3a3100000000000000000000000000, '2022-09-27 05:03:52', NULL, 1),
+(16, 'admin', 0x3a3a3100000000000000000000000000, '2022-09-27 05:34:13', NULL, 1),
+(17, 'admin', 0x3a3a3100000000000000000000000000, '2022-09-27 05:34:32', NULL, 1),
+(18, 'admin', 0x3a3a3100000000000000000000000000, '2022-09-27 08:59:39', NULL, 1),
+(19, '10806121', 0x3a3a3100000000000000000000000000, '2022-09-27 10:18:04', NULL, 1),
+(20, 'admin', 0x3a3a3100000000000000000000000000, '2022-09-27 10:50:16', NULL, 1),
+(21, 'admin', 0x3a3a3100000000000000000000000000, '2022-09-27 10:51:11', NULL, 1),
+(22, 'admin', 0x3a3a3100000000000000000000000000, '2022-09-27 13:40:33', NULL, 1),
+(23, 'admin', 0x3a3a3100000000000000000000000000, '2022-09-27 13:40:46', NULL, 1),
+(24, 'admin', 0x3a3a3100000000000000000000000000, '2022-09-27 13:41:18', NULL, 1),
+(25, 'admin', 0x3a3a3100000000000000000000000000, '2022-09-27 14:29:04', NULL, 1);
 
 --
 -- Indexes for dumped tables
@@ -349,7 +364,7 @@ ALTER TABLE `course`
 -- AUTO_INCREMENT for table `courseenrolls`
 --
 ALTER TABLE `courseenrolls`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `department`
@@ -373,7 +388,7 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT for table `semester`
 --
 ALTER TABLE `semester`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `session`
@@ -385,7 +400,7 @@ ALTER TABLE `session`
 -- AUTO_INCREMENT for table `userlog`
 --
 ALTER TABLE `userlog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
