@@ -8,25 +8,25 @@ header('location:index.php');
 }
 else{
 
-if(isset($_POST['submit']))
-{
-$studentregno=$_POST['studentregno'];
-$pincode=$_POST['Pincode'];
-$session=$_POST['session'];
-$dept=$_POST['department'];
-$level=$_POST['level'];
-$course=$_POST['course'];
-$sem=$_POST['sem'];
-$ret=mysqli_query($con,"insert into courseenrolls(studentRegno,pincode,session,department,level,course,semester) values('$studentregno','$pincode','$session','$dept','$level','$course','$sem')");
-if($ret)
-{
-echo '<script>alert("Enroll Successfully !!")</script>';
-echo '<script>window.location.href=enroll.php</script>';
-}else{
-echo '<script>alert("Error : Not Enroll")</script>';
-echo '<script>window.location.href=enroll.php</script>';
-}
-}
+  if(isset($_POST['submit']))
+  {
+  $studentregno=$_POST['studentregno'];
+  $pincode=$_POST['Pincode'];
+  $session=$_POST['session'];
+  $dept=$_POST['department'];
+  $level=$_POST['level'];
+  $course=$_POST['course'];
+  $sem=$_POST['sem'];
+  $ret=mysqli_query($con,"insert into courseenrolls(studentRegno,pincode,session,department,level,course,semester) values('$studentregno','$pincode','$session','$dept','$level','$course','$sem')");
+  if($ret)
+  {
+  echo '<script>alert("Enroll Successfully !!")</script>';
+  echo '<script>window.location.href=enroll.php</script>';
+  }else{
+  echo '<script>alert("Error : Not Enroll")</script>';
+  echo '<script>window.location.href=enroll.php</script>';
+  }
+  }
 ?>
 
 <!DOCTYPE html>

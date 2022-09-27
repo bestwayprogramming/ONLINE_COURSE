@@ -54,7 +54,7 @@ echo '<script>window.location.href=manage-students.php</script>';
         <div class="container">
               <div class="row">
                     <div class="col-md-12">
-                        <h1 class="page-head-line">Course  </h1>
+                        <h1 class="page-head-line">STUDENT</h1>
                     </div>
                 </div>
                 <div class="row" >
@@ -64,7 +64,7 @@ echo '<script>window.location.href=manage-students.php</script>';
                     <!--    Bordered Table  -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Manage Course
+                            Manage Student
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">

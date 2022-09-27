@@ -74,7 +74,7 @@ $cnt=1;
 while($row=mysqli_fetch_array($sql))
 {
 ?>
-<p><b>Last Updated at</b> :<?php echo htmlentities($row['updationDate']);?></p>
+
    <div class="form-group">
     <label for="coursecode">Course Code  </label>
     <input type="text" class="form-control" id="coursecode" name="coursecode" placeholder="Course Code" value="<?php echo htmlentities($row['courseCode']);?>" required />

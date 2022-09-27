@@ -9,15 +9,23 @@ else{
 // COde for insertion
 if(isset($_POST['submit']))
 {
+    $semester=$_POST['semester'];
+    $query="select * from semester where semester='$semester'";
+    $row=mysqli_query($con,$query);
+    if (mysqli_num_rows($row)>0) {
+        echo '<script>alert("Already Exists.");</script>';
+    }
+    else{
   $semester=$_POST['semester'];
 $ret=mysqli_query($con,"insert into semester(semester) values('$semester')");
 if($ret)
 {
-echo '<script>alert("Semester Created Successfully !!")</script>';
+// echo '<script>alert("Semester Created Successfully !!")</script>';
 echo '<script>window.location.href=semester.php</script>';
 }else{
-echo '<script>alert("Something went wrong. Please try again.")</script>';
+// echo '<script>alert("Something went wrong. Please try again.")</script>';
 echo '<script>window.location.href=semester.php</script>';
+}
 }
 }
 //Code For Deletion
@@ -115,6 +123,8 @@ while($row=mysqli_fetch_array($sql))
                                             <td><?php echo htmlentities($row['semester']);?></td>
                                             <td><?php echo htmlentities($row['creationDate']);?></td>
                                             <td>
+                                            <a href="edit-semester.php?id=<?php echo $row['id']?>">
+<button class="btn btn-primary"><i class="fa fa-edit "></i> Edit</button> </a>  
   <a href="semester.php?id=<?php echo $row['id']?>&del=delete" onClick="return confirm('Are you sure you want to delete?')">
                                             <button class="btn btn-danger">Delete</button>
 </a>

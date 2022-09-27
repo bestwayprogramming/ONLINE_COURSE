@@ -19,7 +19,7 @@ $log=mysqli_query($con,"insert into userlog(studentRegno,userip,status) values('
 header("location: admin/index.php");
 }else{
 $_SESSION['errmsg']="Invalid Reg no or Password";
-header("location:http:index.php");
+header("location: index.php");
 }
 }
 ?>
@@ -36,6 +36,7 @@ header("location:http:index.php");
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <?php include('includes/header.php');?>
@@ -49,7 +50,7 @@ header("location:http:index.php");
                              <!-- <li><a href="index.php">Home </a></li> -->
                              <li><a href="admin/">Admin Login </a></li>
                               <!-- <li><a href="index.php">Student Login</a></li> -->
-        
+            
 
                         </ul>
                     </div>
